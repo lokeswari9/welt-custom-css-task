@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Style</title>
+  </head>
+    <body>
+      <div class="card" style="--x: 0; --y:0">
+          <h1>Testing this Custom Style</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, fugiat aspernatur mollitia ducimus veniam explicabo minus. Officiis rerum libero molestiae dolorem? Quae qui non eligendi explicabo optio amet voluptatum omnis!</p>
+      </div>
+      <script>
+          document.querySelector('.card').onmousemove = (e) => {
+              const x = e.pageX - e.target.offsetLeft;
+              const y = e.pageY - e.target.offsetTop;
+              e.target.style.setProperty('--x', `${ x }px`)
+              e.target.style.setProperty('--y', `${ y }px`)
+          }
+      </script>
+    </body>
+    <style>
+      :root {
+        --blue: #1e90ff;
+      }
+      body {
+          height: 100vh;
+          margin: 0;
+          display: grid;
+          place-items: center;
+          font-family: 'Nunito';
+          color: white;
+      }
+      .card {
+          background: radial-gradient(circle at var(--x) var(--y), #5de7ff 0%, red 100%);
+          border-radius: 15px;
+          padding: 1em 2em;
+          width: 40%;
+          font-size: 10px;
+      }     
+      h1 {  
+        border-bottom: 2px solid var(--white);
+      }
+      @media screen and (min-width: 450px) {
+        .card {
+          --fontsize: 25px;
+        }
+        h1 {
+          border-bottom: 2px solid var(--blue);
+        }
+      }
+    </style>
+</html>
